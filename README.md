@@ -127,4 +127,6 @@ snake-86/
 
 ## License
 
-Personal/educational use.
+Copyright 2026 john-michaelg135. All rights reserved.
+
+This source code is provided for viewing purposes only. No permission is granted to use, copy, modify, or distribute this software without explicit written consent from the author.
