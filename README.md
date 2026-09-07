@@ -14,6 +14,7 @@ A modern retro arcade snake game built with React, TypeScript, and HTML5 Canvas.
 - Retro UI with pixel fonts, scanlines, CRT bezel glow, animated fireflies, vignette overlays
 - Responsive layout with touch/swipe controls and on-screen D-pad for mobile
 - Persistent high scores saved per-difficulty in localStorage
+- Installable PWA with offline app-shell and font caching
 - Keyboard shortcuts: arrow keys / WASD to steer, Space to pause, R to restart, M to mute
 
 ---
@@ -54,6 +55,10 @@ Output goes to `dist/`.
 ```bash
 npm run typecheck
 ```
+
+### Installing Offline
+
+Build and deploy the `dist/` directory over HTTPS. Open the game once while online, then use the browser's install action to add SNAKE·86 to a phone home screen. The generated service worker precaches the app bundle, manifest, logo, and game assets; Google Fonts are cached the first time they load. The game has no server-backed mutations, so scores, difficulty, and sound preferences remain available offline through localStorage.
 
 ---
 
