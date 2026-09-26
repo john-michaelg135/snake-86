@@ -212,7 +212,7 @@ export default function App() {
       </header>
 
       {/* main */}
-      <main className="relative z-10 flex flex-1 flex-col items-center justify-center gap-6 px-4 pb-8 lg:flex-row lg:items-start lg:justify-center lg:gap-10 lg:px-8 lg:pt-2">
+      <main className="relative z-10 flex flex-1 flex-col items-center justify-center gap-6 px-4 pt-6 pb-8 lg:flex-row lg:items-start lg:justify-center lg:gap-10 lg:px-8 lg:pt-2">
         {/* board column */}
         <section className="flex w-full max-w-[540px] flex-col items-center gap-3">
           {/* HUD */}

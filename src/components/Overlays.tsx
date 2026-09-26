@@ -80,7 +80,7 @@ function Shell({ children, tone = "dark" }: { children: React.ReactNode; tone?: 
         tone === "red" ? "bg-[rgba(26,7,5,0.86)]" : "bg-[rgba(5,15,10,0.87)]"
       }`}
     >
-      <div className="anim-rise pixel-panel pixel-notch w-full max-w-[340px] px-5 py-6 text-center sm:px-7 sm:py-7">
+      <div className="anim-rise pixel-panel pixel-notch w-full max-w-[340px] mt-3 px-5 py-6 text-center sm:px-7 sm:py-7">
         {children}
       </div>
     </div>
