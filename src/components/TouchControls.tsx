@@ -55,7 +55,7 @@ export default function TouchControls({
         <PadButton dir="down" rotate={180} onSteer={onSteer} label="Move down" />
         <PadButton dir="right" rotate={90} onSteer={onSteer} label="Move right" />
       </div>
-      <p className="mt-2 text-center text-[11px] text-fern-dim">tap pads or swipe on the board</p>
+      <p className="mt-2 select-none text-center text-[11px] text-fern-dim">tap pads or swipe on the board</p>
     </div>
   );
 }
