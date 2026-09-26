@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useRef, useState, useEffect } from "react";
 import GameCanvas from "./components/GameCanvas";
 import Overlays from "./components/Overlays";
 import SidePanel from "./components/SidePanel";
@@ -55,6 +55,24 @@ function IconSound({ muted }: { muted: boolean }) {
   );
 }
 
+function IconLock({ locked }: { locked: boolean }) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-4 w-4">
+      {locked ? (
+        <>
+          <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
+          <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+        </>
+      ) : (
+        <>
+          <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
+          <path d="M7 11V7a5 5 0 0 1 9.9-1" />
+        </>
+      )}
+    </svg>
+  );
+}
+
 const FIREFLIES = [
   { left: "8%", top: "22%", size: 4, color: "#b8f651", delay: "0s", dur: "13s" },
   { left: "16%", top: "68%", size: 3, color: "#ffc65e", delay: "-3s", dur: "16s" },
@@ -70,6 +88,18 @@ const FIREFLIES = [
 export default function App() {
   const game = useSnakeGame();
   const touchStart = useRef<{ x: number; y: number } | null>(null);
+  const [scrollLocked, setScrollLocked] = useState(false);
+
+  useEffect(() => {
+    if (scrollLocked) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [scrollLocked]);
 
   const {
     status,
@@ -107,7 +137,11 @@ export default function App() {
   };
 
   return (
-    <div className="bg-stage relative flex min-h-dvh flex-col overflow-x-hidden font-body text-cream">
+    <div 
+      className={`bg-stage relative flex min-h-dvh flex-col overflow-x-hidden font-body text-cream ${scrollLocked ? 'touch-none' : ''}`}
+      onTouchStart={scrollLocked ? onTouchStart : undefined}
+      onTouchEnd={scrollLocked ? onTouchEnd : undefined}
+    >
       {/* ambient layers */}
       <div className="bg-gridlines pointer-events-none absolute inset-0" aria-hidden />
       <div aria-hidden className="pointer-events-none absolute inset-0">
@@ -162,6 +196,17 @@ export default function App() {
             }`}
           >
             <IconSound muted={muted} />
+          </button>
+          <button
+            type="button"
+            onClick={() => setScrollLocked(!scrollLocked)}
+            aria-label={scrollLocked ? "Unlock swipe" : "Lock swipe"}
+            title="Lock swipe controls"
+            className={`btn-ghost flex h-10 w-10 items-center justify-center border lg:hidden ${
+              scrollLocked ? "border-lime/50 bg-lime/10 text-lime" : "border-edge bg-panel text-fern"
+            }`}
+          >
+            <IconLock locked={scrollLocked} />
           </button>
         </div>
       </header>
