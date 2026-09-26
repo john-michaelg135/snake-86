@@ -290,7 +290,7 @@ export default function App() {
           </div>
 
           {/* touch pad */}
-          <TouchControls onSteer={game.steer} className="w-full lg:hidden" />
+          <TouchControls onSteer={game.steer} className="mt-4 w-full lg:hidden" />
 
           {/* panels under board on small screens */}
           <div className="mt-2 w-full lg:hidden">
