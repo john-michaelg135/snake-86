@@ -88,7 +88,7 @@ const FIREFLIES = [
 export default function App() {
   const game = useSnakeGame();
   const touchStart = useRef<{ x: number; y: number } | null>(null);
-  const [scrollLocked, setScrollLocked] = useState(false);
+  const [scrollLocked, setScrollLocked] = useState(true);
 
   useEffect(() => {
     if (scrollLocked) {
