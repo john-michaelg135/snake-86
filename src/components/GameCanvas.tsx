@@ -192,6 +192,10 @@ export default function GameCanvas({ gameRef, fxRef, loopRef, status }: Props) {
         }
       }
 
+      /* -------- clear to prevent visual glitches -------- */
+      ctx.setTransform(1, 0, 0, 1, 0, 0);
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
       /* -------- setup transform + shake -------- */
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
       const shake = shakeRef.current;
